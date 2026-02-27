@@ -1,6 +1,10 @@
 "use client";
 
-const SignUpForm = () => {
+type IProps = {
+  signUp: () => void;
+};
+
+const SignUpForm = ({ signUp }: IProps) => {
   return (
     <div className="bg-white w-full max-w-4xl grid grid-cols-2 gap-16  mx-8 p-8 pl-16 rounded-4xl">
       <div className="flex flex-col gap-6 justify-center">
@@ -38,7 +42,7 @@ const SignUpForm = () => {
           />
         </label>
 
-        <button className="btn">
+        <button className="btn" onClick={signUp}>
           <div>
             <span>Subscribe to monthly newsletter</span>
           </div>
