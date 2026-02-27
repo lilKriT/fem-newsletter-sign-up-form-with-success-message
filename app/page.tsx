@@ -30,7 +30,7 @@ export default function Home() {
   };
 
   return (
-    <section className="min-h-dvh flex justify-center items-center py-32">
+    <section className="min-h-dvh flex justify-center items-center lg:py-32">
       {!isSuccess ? (
         <SignUpForm
           email={email}

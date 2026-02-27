@@ -12,6 +12,7 @@ type IProps = {
 
 const SignUpForm = ({ email, setEmail, animate, signUp }: IProps) => {
   const [emailError, setEmailError] = useState("");
+  const [errorShake, setErrorShake] = useState(false);
 
   const validateEmail = () => {
     const isValid = z.email({ error: "Valid email required" }).safeParse(email);
@@ -25,11 +26,23 @@ const SignUpForm = ({ email, setEmail, animate, signUp }: IProps) => {
     return isValid.success;
   };
 
+  const shakeButton = async () => {
+    setErrorShake(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    setErrorShake(false);
+  };
+
   return (
     <div
-      className={`bg-white w-full max-w-4xl grid grid-cols-2 gap-16  mx-8 p-8 pl-16 rounded-4xl animate-slideIn ${animate && "animate-slideOut"}`}
+      className={`bg-white w-full max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-16 lg:mx-8 lg:p-8 lg:pl-16 rounded-4xl animate-slideIn ${animate && "animate-slideOut"}`}
     >
-      <div className="flex flex-col gap-6 justify-center">
+      {/* Illustration */}
+      <div className="lg:order-2 bg-[url(/illustration-sign-up-mobile.svg)] md:bg-[url(/illustration-sign-up-tablet.svg)] lg:bg-[url(/illustration-sign-up-desktop.svg)] bg-cover aspect-400/593"></div>
+
+      {/* Form */}
+      <div className="lg:order-1 flex flex-col gap-6 justify-center">
         <h1 className="text-[clamp(2.25rem,6vw,3.25rem)] font-bold">
           Stay updated!
         </h1>
@@ -71,11 +84,15 @@ const SignUpForm = ({ email, setEmail, animate, signUp }: IProps) => {
         </label>
 
         <button
-          className="btn"
+          className={`${errorShake && "animate-[bounce_1s_ease-in-out]"} btn`}
           onClick={() => {
             const emailValid = validateEmail();
 
-            if (emailValid) signUp();
+            if (emailValid) {
+              signUp();
+            } else {
+              shakeButton();
+            }
           }}
         >
           <div>
@@ -83,7 +100,6 @@ const SignUpForm = ({ email, setEmail, animate, signUp }: IProps) => {
           </div>
         </button>
       </div>
-      <div className="bg-[url(/illustration-sign-up-desktop.svg)] bg-cover aspect-400/593"></div>
     </div>
   );
 };
