@@ -23,14 +23,24 @@
   --color-gray: hsl(0, 0%, 58%);
 
   /* Animations */
-  --animate-slideIn: toastSlide 0.5s ease-in-out;
+  --animate-slideIn: toastEnter 0.5s ease-in-out forwards;
+  --animate-slideOut: toastLeave 0.5s ease-in-out forwards;
 
-  @keyframes toastSlide {
+  @keyframes toastEnter {
     0% {
       transform: translateY(50rem) scale(0);
     }
     100% {
       transform: translateY(0);
+    }
+  }
+
+  @keyframes toastLeave {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50rem) scale(0);
     }
   }
 }

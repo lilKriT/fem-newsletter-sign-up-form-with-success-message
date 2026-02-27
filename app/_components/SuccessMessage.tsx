@@ -3,11 +3,14 @@ import Image from "next/image";
 type IProps = {
   email: string;
   dismissMessage: () => void;
+  animate: boolean;
 };
 
-const SuccessMessage = ({ email, dismissMessage }: IProps) => {
+const SuccessMessage = ({ email, dismissMessage, animate }: IProps) => {
   return (
-    <div className="bg-white flex flex-col gap-8 px-12 py-8 rounded-4xl max-w-[50ch] animate-slideIn 1animate-[slideIn_.3s_ease-in-out_reverse_forwards]">
+    <div
+      className={`bg-white flex flex-col gap-8 px-12 py-8 rounded-4xl max-w-[50ch] animate-slideIn ${animate && "animate-slideOut"}`}
+    >
       <Image
         src={"/icon-success.svg"}
         alt="Success Checkmark"

@@ -1,12 +1,15 @@
 "use client";
 
 type IProps = {
+  animate: boolean;
   signUp: () => void;
 };
 
-const SignUpForm = ({ signUp }: IProps) => {
+const SignUpForm = ({ animate, signUp }: IProps) => {
   return (
-    <div className="bg-white w-full max-w-4xl grid grid-cols-2 gap-16  mx-8 p-8 pl-16 rounded-4xl">
+    <div
+      className={`bg-white w-full max-w-4xl grid grid-cols-2 gap-16  mx-8 p-8 pl-16 rounded-4xl animate-slideIn ${animate && "animate-slideOut"}`}
+    >
       <div className="flex flex-col gap-6 justify-center">
         <h1 className="text-[clamp(2.25rem,6vw,3.25rem)] font-bold">
           Stay updated!
