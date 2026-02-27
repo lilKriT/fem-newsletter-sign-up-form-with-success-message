@@ -1,11 +1,30 @@
 "use client";
 
+import { useState } from "react";
+import { z } from "zod";
+
 type IProps = {
+  email: string;
+  setEmail: (s: string) => void;
   animate: boolean;
   signUp: () => void;
 };
 
-const SignUpForm = ({ animate, signUp }: IProps) => {
+const SignUpForm = ({ email, setEmail, animate, signUp }: IProps) => {
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = () => {
+    const isValid = z.email({ error: "Valid email required" }).safeParse(email);
+
+    if (isValid.success) {
+      setEmailError("");
+    } else {
+      setEmailError(isValid.error.issues[0].message);
+    }
+
+    return isValid.success;
+  };
+
   return (
     <div
       className={`bg-white w-full max-w-4xl grid grid-cols-2 gap-16  mx-8 p-8 pl-16 rounded-4xl animate-slideIn ${animate && "animate-slideOut"}`}
@@ -36,16 +55,29 @@ const SignUpForm = ({ animate, signUp }: IProps) => {
         </ul>
 
         <label className="mt-4 font-bold flex flex-col gap-2 text-blue-800">
-          Email address
+          <div className="flex justify-between">
+            <span>Email address</span>
+            <span className="text-red">{emailError}</span>
+          </div>
           <input
             type="text"
             placeholder="email@company.com"
             autoComplete="email"
-            className="border border-gray rounded-lg px-6 py-4 text-lg font-normal outline-none focus:ring-2 ring-orange-500"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onBlur={(e) => validateEmail()}
+            className={`border border-gray rounded-lg px-6 py-4 text-lg font-normal outline-none focus:ring-2 ring-blue-700 ${emailError !== "" && "ring-red bg-red-300 border-red-500"}`}
           />
         </label>
 
-        <button className="btn" onClick={signUp}>
+        <button
+          className="btn"
+          onClick={() => {
+            const emailValid = validateEmail();
+
+            if (emailValid) signUp();
+          }}
+        >
           <div>
             <span>Subscribe to monthly newsletter</span>
           </div>

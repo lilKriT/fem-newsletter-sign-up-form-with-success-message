@@ -6,11 +6,7 @@ import SuccessMessage from "./_components/SuccessMessage";
 
 export default function Home() {
   const [isSuccess, setIsSuccess] = useState(false);
-
-  // Lets think about it.
-  // I can only go two ways - enter success or dismiss success
-  // when entering - signup leaves, success comes in
-  // when dismissing - success leaves, signup comes in
+  const [email, setEmail] = useState("");
 
   const [successAnimation, setSuccessAnimation] = useState(false);
   const [dismissAnimation, setDismissAnimation] = useState(false);
@@ -29,16 +25,22 @@ export default function Home() {
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     setIsSuccess(false);
+    setEmail("");
     setDismissAnimation(false);
   };
 
   return (
-    <section className="min-h-dvh flex justify-center items-center">
+    <section className="min-h-dvh flex justify-center items-center py-32">
       {!isSuccess ? (
-        <SignUpForm signUp={signUp} animate={successAnimation} />
+        <SignUpForm
+          email={email}
+          setEmail={setEmail}
+          signUp={signUp}
+          animate={successAnimation}
+        />
       ) : (
         <SuccessMessage
-          email="whatever@google.com"
+          email={email}
           dismissMessage={dismissMessage}
           animate={dismissAnimation}
         />

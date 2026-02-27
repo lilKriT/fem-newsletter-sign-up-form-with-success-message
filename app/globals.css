@@ -1,16 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  /* --background: #ffffff;
-  --foreground: #171717; */
 }
 
 @theme inline {
-  /* --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono); */
-
   /* Font size 16px */
   --font-sans: var(--font-roboto-sans);
 
@@ -55,13 +48,6 @@ body {
   font-size: var(--text-base);
   font-family: var(--font-roboto-sans), Arial, Helvetica, sans-serif;
 }
-
-/* .btn {
-  @apply bg-blue-800 text-white px-4 py-4 rounded-lg;
-  @apply text-lg font-bold cursor-pointer;
-  @apply bg-linear-[135deg,hsl(234,29%,20%)_0%,hsl(234,29%,20%)_50%,hsl(355.6,100%,67.6%)_50%,hsl(8.3,100%,64.5%)_100%];
-  @apply bg-size-[220%] bg-position-[0%] hover:bg-position-[100%] motion-safe:duration-150 ease-in-out;
-} */
 
 .btn {
   @apply relative text-white rounded-lg;
