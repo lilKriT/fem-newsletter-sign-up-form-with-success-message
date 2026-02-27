@@ -9,7 +9,7 @@ type IProps = {
 const SuccessMessage = ({ email, dismissMessage, animate }: IProps) => {
   return (
     <div
-      className={`bg-white flex flex-col gap-8 px-12 py-8 rounded-4xl max-w-[50ch] animate-slideIn ${animate && "animate-slideOut"}`}
+      className={`bg-white flex flex-col gap-8 px-8 lg:px-12 py-8 min-h-dvh lg:min-h-0 lg:rounded-4xl max-w-[50ch] lg:motion-safe:animate-slideIn ${animate && "lg:motion-safe:animate-slideOut"}`}
     >
       <Image
         src={"/icon-success.svg"}
@@ -28,7 +28,7 @@ const SuccessMessage = ({ email, dismissMessage, animate }: IProps) => {
         button inside to confirm your subscription.
       </p>
 
-      <button className="btn" onClick={dismissMessage}>
+      <button className="btn mt-auto lg:mt-none" onClick={dismissMessage}>
         <div>
           <span>Dismiss message</span>
         </div>

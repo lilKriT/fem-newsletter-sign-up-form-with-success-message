@@ -36,13 +36,13 @@ const SignUpForm = ({ email, setEmail, animate, signUp }: IProps) => {
 
   return (
     <div
-      className={`bg-white w-full max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-16 lg:mx-8 lg:p-8 lg:pl-16 rounded-4xl animate-slideIn ${animate && "animate-slideOut"}`}
+      className={`bg-white w-full max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 lg:mx-8 lg:p-8 lg:pl-16 lg:rounded-4xl lg:motion-safe:animate-slideIn ${animate && "lg:motion-safe:animate-slideOut"}`}
     >
       {/* Illustration */}
-      <div className="lg:order-2 bg-[url(/illustration-sign-up-mobile.svg)] md:bg-[url(/illustration-sign-up-tablet.svg)] lg:bg-[url(/illustration-sign-up-desktop.svg)] bg-cover aspect-400/593"></div>
+      <div className="lg:order-2 bg-[url(/illustration-sign-up-mobile.svg)] md:bg-[url(/illustration-sign-up-tablet.svg)] lg:bg-[url(/illustration-sign-up-desktop.svg)] bg-cover aspect-375/284 md:528/360 lg:aspect-400/593"></div>
 
       {/* Form */}
-      <div className="lg:order-1 flex flex-col gap-6 justify-center">
+      <div className="lg:order-1 flex flex-col px-8 pb-12 lg:p-0 gap-6 justify-center">
         <h1 className="text-[clamp(2.25rem,6vw,3.25rem)] font-bold">
           Stay updated!
         </h1>
@@ -84,7 +84,7 @@ const SignUpForm = ({ email, setEmail, animate, signUp }: IProps) => {
         </label>
 
         <button
-          className={`${errorShake && "animate-[bounce_1s_ease-in-out]"} btn`}
+          className={`${errorShake && "lg:motion-safe:animate-[bounce_1s_ease-in-out]"} btn`}
           onClick={() => {
             const emailValid = validateEmail();
 
