@@ -39,7 +39,9 @@ const SignUpForm = () => {
         </label>
 
         <button className="btn">
-          <span>Subscribe to monthly newsletter</span>
+          <div>
+            <span>Subscribe to monthly newsletter</span>
+          </div>
         </button>
       </div>
       <div className="bg-[url(/illustration-sign-up-desktop.svg)] bg-cover aspect-400/593"></div>

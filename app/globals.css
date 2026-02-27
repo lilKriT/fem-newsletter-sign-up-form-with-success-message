@@ -42,12 +42,24 @@ body {
 } */
 
 .btn {
-  @apply relative bg-blue-800 text-white px-4 py-4 rounded-lg overflow-hidden;
+  @apply relative text-white rounded-lg;
   @apply text-lg font-bold cursor-pointer;
-  @apply before:absolute before:z-0 before:bg-linear-135 before:from-[hsl(355.6,100%,67.6%)] before:to-[hsl(8.3,100%,64.5%)] before:inset-0 before:opacity-0 hover:before:opacity-100;
-  @apply motion-safe:before:duration-500 before:ease-in-out;
 
-  span {
-    @apply relative z-10;
+  /* Gradient glow */
+  @apply before:content-[""] before:absolute before:inset-0;
+  @apply before:bg-[linear-gradient(90deg,orange,red)] before:blur-xl before:opacity-0 hover:before:opacity-60;
+  @apply motion-safe:before:duration-1000 before:ease-in-out before:translate-y-4;
+
+  div {
+    @apply bg-blue-800 px-4 py-4 relative z-10 rounded-lg overflow-hidden;
+
+    /* Gradient background */
+    @apply after:absolute  after:bg-linear-135 after:from-[hsl(355.6,100%,67.6%)] after:to-[hsl(8.3,100%,64.5%)];
+    @apply after:inset-0 after:opacity-0 hover:after:opacity-100;
+    @apply motion-safe:after:duration-1000 after:ease-in-out before:rounded-[inherit];
+
+    span {
+      @apply relative z-10;
+    }
   }
 }
