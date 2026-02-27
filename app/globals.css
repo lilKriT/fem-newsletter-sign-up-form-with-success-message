@@ -34,7 +34,20 @@ body {
   font-family: var(--font-roboto-sans), Arial, Helvetica, sans-serif;
 }
 
-.btn {
+/* .btn {
   @apply bg-blue-800 text-white px-4 py-4 rounded-lg;
-  @apply text-lg font-bold;
+  @apply text-lg font-bold cursor-pointer;
+  @apply bg-linear-[135deg,hsl(234,29%,20%)_0%,hsl(234,29%,20%)_50%,hsl(355.6,100%,67.6%)_50%,hsl(8.3,100%,64.5%)_100%];
+  @apply bg-size-[220%] bg-position-[0%] hover:bg-position-[100%] motion-safe:duration-150 ease-in-out;
+} */
+
+.btn {
+  @apply relative bg-blue-800 text-white px-4 py-4 rounded-lg overflow-hidden;
+  @apply text-lg font-bold cursor-pointer;
+  @apply before:absolute before:z-0 before:bg-linear-135 before:from-[hsl(355.6,100%,67.6%)] before:to-[hsl(8.3,100%,64.5%)] before:inset-0 before:opacity-0 hover:before:opacity-100;
+  @apply motion-safe:before:duration-500 before:ease-in-out;
+
+  span {
+    @apply relative z-10;
+  }
 }

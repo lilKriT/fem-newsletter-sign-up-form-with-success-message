@@ -34,11 +34,13 @@ const SignUpForm = () => {
             type="text"
             placeholder="email@company.com"
             autoComplete="email"
-            className="border border-gray rounded-lg px-6 py-4 text-lg font-normal"
+            className="border border-gray rounded-lg px-6 py-4 text-lg font-normal outline-none focus:ring-2 ring-orange-500"
           />
         </label>
 
-        <button className="btn">Subscribe to monthly newsletter</button>
+        <button className="btn">
+          <span>Subscribe to monthly newsletter</span>
+        </button>
       </div>
       <div className="bg-[url(/illustration-sign-up-desktop.svg)] bg-cover aspect-400/593"></div>
     </div>
